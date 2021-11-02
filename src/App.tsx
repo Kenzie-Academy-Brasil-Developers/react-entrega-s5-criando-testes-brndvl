@@ -12,6 +12,7 @@ function App() {
       <Toaster />
       <Search />
       <Address />
+      <p>learn react</p>
     </div>
   );
 }
