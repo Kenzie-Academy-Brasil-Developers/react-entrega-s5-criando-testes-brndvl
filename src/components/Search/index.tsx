@@ -4,6 +4,7 @@ import { useLocateCep } from "../../providers/CepProvider";
 
 const Search = () => {
   const { cepNumber, setCepNumber, handleSearch } = useLocateCep();
+
   return (
     <>
       <Header as="h2" icon>
@@ -20,7 +21,7 @@ const Search = () => {
         <Button
           name="cep-button"
           primary
-          disabled={!cepNumber}
+          //disabled={!cepNumber}
           onClick={() => handleSearch(cepNumber)}
         >
           <Icon name="search" />

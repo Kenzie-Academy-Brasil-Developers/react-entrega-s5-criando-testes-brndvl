@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import Search from "../../components/Search";
-import api from "../../services"
+import api from "../../services";
 import MockAdapter from "axios-mock-adapter";
 
 describe("Search Component", () => {
@@ -17,21 +17,18 @@ describe("Search Component", () => {
     expect(inputField).toBeInTheDocument();
   });
 
-  test("Se o input recebe o valor nulo ao clicar no botao", async() => {
+  test("Se o input recebe o valor nulo ao clicar no botao", () => {
     render(<Search />);
 
     const inputField = screen.getByPlaceholderText("Insira o CEP");
-    const buttonElement = screen.getByText("Buscar pelo CEP")
+    const buttonElement = screen.getByText("Buscar pelo CEP");
 
-    fireEvent.change(inputField, {target: {value: null}})
+    setTimeout(() => {
+      fireEvent.change(inputField, { target: { value: 14801300 } });
+      fireEvent.click(buttonElement);
+      expect(inputField).toHaveValue(14801300);
+    }, 1000);
 
-    fireEvent.click(buttonElement)
-
-    await waitFor(() => {
-      expect(inputField).toHaveValue(null)
-    })
+   
   });
-
-  
-  
 });
